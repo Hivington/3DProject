@@ -61,5 +61,8 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Player.Jump.triggered;
     }
-
+    public bool PlayerRun()
+    {
+        return playerControls.Player.Run.inProgress;
+    }
 }

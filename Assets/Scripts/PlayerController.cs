@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
+    [SerializeField]
+    private float runMultp = 2f;
 
     //On choppe le CharacterController
     private void Start()
@@ -44,7 +46,15 @@ public class PlayerController : MonoBehaviour
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
         //Grâce à Move(), on bouge le joueur selon le vector3 précédent qu'on multiplie par Time.deltaTime et la playerSpeed
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        if (inputManager.PlayerRun() ==true)
+        {
+            Debug.Log("Run");
+            controller.Move(move * Time.deltaTime * playerSpeed * runMultp);
+        }
+        else
+        {
+            controller.Move(move * Time.deltaTime * playerSpeed);
+        }
 
         //Si move est différent que (0, 0 ,0), on applique le Vector3 au gameObject.transform.forward
         //if (move != Vector3.zero)
