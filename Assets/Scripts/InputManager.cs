@@ -65,4 +65,9 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Player.Run.inProgress;
     }
+
+    public bool PlayerInteract()
+    {
+        return playerControls.Player.Interact.triggered;
+    }
 }

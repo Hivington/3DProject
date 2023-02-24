@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    private bool isRunning;
     private InputManager inputManager;
     private Transform cameraTransform;
 
@@ -46,14 +47,19 @@ public class PlayerController : MonoBehaviour
         move = cameraTransform.forward * move.z + cameraTransform.right * move.x;
         move.y = 0f;
         //Grâce à Move(), on bouge le joueur selon le vector3 précédent qu'on multiplie par Time.deltaTime et la playerSpeed
-        if (inputManager.PlayerRun() ==true)
+        if (inputManager.PlayerRun() ==true && groundedPlayer)
         {
-            Debug.Log("Run");
+            controller.Move(move * Time.deltaTime * playerSpeed * runMultp);
+            isRunning= true;
+        }
+        else if (!groundedPlayer && isRunning == true) 
+        {
             controller.Move(move * Time.deltaTime * playerSpeed * runMultp);
         }
         else
         {
             controller.Move(move * Time.deltaTime * playerSpeed);
+            isRunning= false;
         }
 
         //Si move est différent que (0, 0 ,0), on applique le Vector3 au gameObject.transform.forward
