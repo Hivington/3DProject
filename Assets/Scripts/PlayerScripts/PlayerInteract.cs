@@ -39,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
         //Le raycast détecte si il y a un objet avec le bon masque dans son rayon, retourne true si oui
         if(Physics.Raycast(ray, out hitInfo, distance, mask))
         {
-            //On check si si jamais la valeur n'est pas null
+            //On check si jamais la valeur n'est pas null
             if (hitInfo.collider.GetComponent<Interactable>() != null) 
             {
 

@@ -13,7 +13,12 @@ public abstract class Interactable : MonoBehaviour
     //Fonction appelé par le joueur
     public void BaseInteract()
     {
-        Interact();
+        if (useEvents)
+        {
+            GetComponent<InteractionEvents>().OnInteract.Invoke(); 
+            Interact();
+        }
+        
     }
 
     protected virtual void Interact()
