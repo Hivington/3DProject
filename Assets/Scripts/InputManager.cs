@@ -70,4 +70,9 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Player.Interact.triggered;
     }
+
+    public bool PlayerFart()
+    {
+        return playerControls.Player.Fart.triggered;
+    }
 }

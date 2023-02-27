@@ -42,7 +42,6 @@ public class PlayerInteract : MonoBehaviour
             //On check si jamais la valeur n'est pas null
             if (hitInfo.collider.GetComponent<Interactable>() != null) 
             {
-
                 //On crée une variable interactable égale au script interactable sur l'objet que le raycast collide
                 Interactable interactable = hitInfo.collider.GetComponent<Interactable>();
                 //On affiche le prompt de cet objet

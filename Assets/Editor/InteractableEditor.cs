@@ -3,7 +3,6 @@ using UnityEditor;
 [CustomEditor(typeof(Interactable),true)] 
 public class InteractableEditor : Editor
 {
-
     // Start is called before the first frame update
     public override void OnInspectorGUI()
     {
@@ -15,7 +14,8 @@ public class InteractableEditor : Editor
 
             if(interactable.GetComponent<InteractionEvents>() == null)
             {
-
+                interactable.useEvents = true;
+                interactable.gameObject.AddComponent<InteractionEvents>();
             }
         }
         else

@@ -4,21 +4,27 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-
     public bool useEvents;
 
+
     //Message affiché quand le joueur regarde un interactable
+    [SerializeField]
     public string promptMessage;
     
     //Fonction appelé par le joueur
+    public virtual string OnLook()
+    {
+        return promptMessage;
+    }
+
     public void BaseInteract()
     {
         if (useEvents)
         {
-            GetComponent<InteractionEvents>().OnInteract.Invoke(); 
-            Interact();
+            GetComponent<InteractionEvents>().OnInteract.Invoke();
+            
         }
-        
+        Interact();
     }
 
     protected virtual void Interact()
